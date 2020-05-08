@@ -1,23 +1,17 @@
 <?php
-	$servidor = "localhost";
-	$username = "root";
-	$password = "root";
-	$database = "prova";
+	include 'conexao.php';
 
 	$alternativa = $_POST['alternativa'];
 	$alternativa_implode = implode(",", $_POST['alternativa']);
 
-	$connection = mysqli_connect($servidor, $username, $password, $database);
-	if (!$connection) {
-		echo "Não conectado ";	
-	}
+	$nome = $_POST['nome'];
+	$curso = $_POST['curso'];
+	$data = $_POST['data'];
 
 	if(isset($_POST['alternativa'])){
-		$sql = mysqli_query($connection, "INSERT INTO questoes(alternativa) VALUES ('$alternativa_implode')");
+		$sql = mysqli_query($connection, "INSERT INTO questoes(alternativa, nome, curso, data) VALUES ('$alternativa_implode', '$nome', '$curso', '$data' )");
 
 		header('location: index.html');
 	}
-
-
 
 ?>
