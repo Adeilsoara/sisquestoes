@@ -2,6 +2,7 @@
 
 	include 'conexao.php';
 	include 'listar.php';
+  include 'header.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,7 @@
   </table>
 
 
- <a class="btn btn-sm btn-primary" href="index.html">Voltar</a> 
+ <a class="btn btn-sm btn-primary" href="index.php">Voltar</a> 
 
 </div>
 </body>

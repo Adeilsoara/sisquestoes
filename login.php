@@ -19,7 +19,7 @@ $row = mysqli_num_rows($result);
 
 if($row == 1) {
 	$_SESSION['usuario'] = $usuario;
-	header('Location: sisquestoes2/index.html');
+	header('Location: sisquestoes2/index.php');
 	exit();
 } else {
 	$_SESSION['nao_autenticado'] = true;

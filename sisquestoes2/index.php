@@ -1,61 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Sistema Questões</title>
-	<link rel="stylesheet" type="text/css" href="jqueryui/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="jqueryui/jquery-ui.theme.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
-
-	<script type="text/javascript" src="jqueryui/jquery.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="jqueryui/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="funcoes.js"></script>
-
-</head>
-<body>
-
-<nav class="navbar fixed-top navbar-light bg-light">
-    
-   <img src="../img/logomm.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-   
-   <a href="tabela.php">
-		<button type="button" class="btn btn-primary">Gabaritos</button>
-	</a>
-
-   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#meuModal">Sair</button>
-
-</nav>
-
-<div id="meuModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title"> Deseja sair do sistema?</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-
-			<div class="modal-body">
-				<p>Cique em Sair para deslogar</p>	
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				<a class="navbar-brand" href="../index_login.html">
-					<button type="button" class="btn btn-primary">Sair</button>
-				</a>
-			</div>
-
-		</div>
-	</div>
-
-</div>
+<?php include 'header.php';?>
 
 <div class="container col-md-6 offset-md-3">
 
-<br><br><br>
+<br>
 
-<h2 align="center">"Sistema" de Questões</h2>
+<h2 align="center">Sistema de Questões</h2>
 <form method="POST" action="salvar.php">
 
  <div class="row">
@@ -73,7 +22,7 @@
       
     </div>
     <div class="col">
-      <input name="data" type="date" class="form-control" placeholder="Data">
+      <input name="data" type="date" class="form-control">
     </div>
  </div>
 

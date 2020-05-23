@@ -1,7 +1,23 @@
+<?php include 'header.php';?>
 <?php 
 	include 'conexao.php';
+
+	if (isset($_GET['id'])) {
+		$id = $_GET['id'];
+		$sql = mysqli_query($connection, "SELECT * FROM questoes WHERE id=$id ");
+
+    $count = (is_array($sql)) ? count($sql) :1 ;
+		if ($count) {
+			$n = mysqli_fetch_array($sql);
+			$alternativa = $n['alternativa'];
+			$nome = $n['nome'];
+			$curso = $n['curso'];
+			$data = $n['data'];
+
+		}
+	}
 	
-	if(isset($_POST['done'])){
+	if(isset($_POST['editar'])){
 		$id = $_GET["id"];
 		$nome = $_POST["nome"];
 		$curso = $_POST["curso"];
@@ -14,85 +30,39 @@
 
 	    header('location: tabela.php');
 	}
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Sistema Questões</title>
-	<link rel="stylesheet" type="text/css" href="jqueryui/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="jqueryui/jquery-ui.theme.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
-
-	<script type="text/javascript" src="jqueryui/jquery.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
-	<script type="text/javascript" src="jqueryui/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="funcoes.js"></script>
-
 </head>
 <body>
-
-<nav class="navbar fixed-top navbar-light bg-light">
-    
-   <img src="../img/logomm.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
-   
-   <a href="tabela.php">
-		<button type="button" class="btn btn-primary">Gabaritos</button>
-	</a>
-
-   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#meuModal">Sair</button>
-
-</nav>
-
-<div id="meuModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title"> Deseja sair do sistema?</h4>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-
-			<div class="modal-body">
-				<p>Cique em Sair para deslogar</p>	
-			</div>
-
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				<a class="navbar-brand" href="../index_login.html">
-					<button type="button" class="btn btn-primary">Sair</button>
-				</a>
-			</div>
-
-		</div>
-	</div>
 
 </div>
 
 <div class="container col-md-6 offset-md-3">
 
-<br><br><br>
+<br>
 
-<h2 align="center">"Sistema" de Questões</h2>
-<form method="POST">
-
+<h2 align="center">Editar informações</h2>
+<form  method="POST">
+<input type="hidden" name="id" value="<?php echo $id; ?>">
  <div class="row">
     <div class="col">
-      <input name="nome" type="text" class="form-control" placeholder="Nome" ></input>
+      <input name="nome" type="text" class="form-control" value="<?php echo $nome; ?>"></input>
     </div>
     <div class="col">
     <select class="form-control" id="cursos" name="curso" required="">
       <option></option>
-      <option>Informática</option>
-      <option>Comércio</option>
-      <option>Enfermagem</option>
-      <option>Administração</option>
+      <option value="Informática" <?=($curso == 'Informática')?'selected':''?> >Informática</option>
+      <option value="Comércio" <?=($curso == 'Comércio')?'selected':''?> >Comércio</option>
+      <option value="Enfermagem" <?=($curso == 'Enfermagem')?'selected':''?>>Enfermagem</option>
+      <option value="Administração" <?=($curso == 'Administração')?'selected':''?>>Administração</option>
     </select>
     </div>
     <div class="col">
-      <input name="data" type="date" class="form-control" placeholder="Data">
+      <input name="data" type="date" class="form-control" value="<?php echo $data; ?>">
     </div>
  </div>
 
@@ -103,11 +73,11 @@
    	<h2>Questão 1</h2>
 		    <legend>Marque uma alternativa: </legend>
 		    <label>Letra A</label>
-		    <input type="radio" name="alternativa[0]" value="letra-a"> <br>
+		    <input type="radio" name="alternativa[0]" value="letra-a" > <br>
 		    <label>Letra B</label>
-		    <input type="radio" name="alternativa[1]" value="letra-b"> <br>
+		    <input type="radio" name="alternativa[1]" value="letra-b" > <br>
 		    <label>Letra C</label>
-		    <input type="radio" name="alternativa[2]" value="letra-c">
+		    <input type="radio" name="alternativa[2]" value="letra-c" >
     </p>
   </div>
   <h3>Questão 2</h3>
@@ -151,7 +121,7 @@
   </div>
 </div> 
 <br>
-	<button name="done" type="submit" class="btn btn-primary col-md-6 offset-md-3 " class="">Atualizar</button>
+	<button name="editar" type="submit" class="btn btn-primary col-md-6 offset-md-3 ">Atualizar</button>
 </form>
 <br>
 

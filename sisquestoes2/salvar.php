@@ -11,7 +11,7 @@
 	if(isset($_POST['alternativa'])){
 		$sql = mysqli_query($connection, "INSERT INTO questoes(alternativa, nome, curso, data) VALUES ('$alternativa_implode', '$nome', '$curso', '$data' )");
 
-		header('location: index.html');
+		header('location: index.php');
 	}
 
 ?>
