@@ -21,6 +21,9 @@
         <a class="nav-link" href="tabela.php">Gabaritos</a>
       </li>
       <li class="nav-item active">
+        <a class="nav-link" href="grafico.php">Gráficos</a>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link" data-toggle="modal" data-target="#meuModal">Sair</a>
       </li>
     </ul>
